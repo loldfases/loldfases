@@ -1,6 +1,5 @@
 //ENEMIGO PEQUEÑO ALEATORIO (No hay Jefes)
-SubProceso Enemigo <- Aleatorio_Enemigo_mini(enemigo_aleatorio Por Valor,Mini_enemigos, )
-	Definir indice_enemigo Como Entero; //Recorre el array de monstruos vencidos
+SubProceso Enemigo <- Aleatorio_Enemigo_mini(enemigo_aleatorio Por Valor,Mini_enemigos Por Referencia,indice_enemigo Por Referencia  )
 	
 	//Enemigos con su vida y daño (Aun no tienen puesto la vida y el daño)
 	Definir goblins Como Caracter; 				 Definir vida_goblins Como Entero;
@@ -15,7 +14,9 @@ SubProceso Enemigo <- Aleatorio_Enemigo_mini(enemigo_aleatorio Por Valor,Mini_en
 	Definir golem_bebe Como Caracter; 			 Definir vida_golem_bebe Como Entero;
 	Definir bruja Como Caracter; 				 Definir vida_bruja Como Entero;
 	Definir bandidos Como Caracter; 				 Definir vida_bandidos Como Entero;
-	indice_enemigo <- 0;
+	
+	//Para invocar un enemigo aleatorio.
+	//  enemigo_aleatorio <- azar(10) + 1;
 	
 	goblins <- "goblins";
 	esqueleto_caballero <- "esqueleto caballero";
@@ -264,6 +265,8 @@ Proceso Slayer_WHAT
 	// ---Enemigos---
 	// ---Mini Enemigos---
 	Dimensionar Mini_enemigos[50];
+	Definir indice_enemigo Como Entero;
+	indice_enemigo <- 0;
 	Definir Mini_enemigos como Caracter;
 	Definir Enemigo Como Caracter; // Enemigo aleatorio del SubProceso 
 	Definir enemigo_aleatorio Como Entero;
@@ -356,8 +359,8 @@ Proceso Slayer_WHAT
 	Escribir " Sobrevivir a esta locura de mundo";
 	Escribir " Si, como lo estas leyendo, ese es tu objeivo porque te puede pasar CUALQUIER cosa que no te esperes en CUALQUIER MOMENTO";
 	Escribir " Eso es todo, sigamos";
-	Escribir " PRESS"," i ", "PARA CONTINUAR";
-	Leer opciones_jugador;
+	Escribir "   Presiona una tecla para continuar ...";
+	Esperar Tecla;
 	
 	Escribir "";
 	Escribir " Avanzas mas adelante del prado y como no ves nada te chocas con algo inusual,";
@@ -367,30 +370,34 @@ Proceso Slayer_WHAT
 	Escribir "";
     Escribir "========================================================";
     Escribir "                   ? SLAYER_WHAT ?                      ";
-	Escribir "		     		                A PELEAR                     ";
+	Escribir "		     		               A PELEAR                     ";
     Escribir "========================================================";
     Escribir "";
+	Escribir "   Presiona una tecla para continuar ...";
+	Esperar Tecla;
+	Limpiar Pantalla;
+	
+	//Enemigo aleatorio
+	enemigo_aleatorio <- azar(10) + 1;
+	Enemigo <- Aleatorio_Enemigo_mini (enemigo_aleatorio,Mini_enemigos,indice_enemigo);
 	
 	Escribir "";
-    Escribir "========================================================";
-    Escribir "                   ¿QUE HARAS?";
-    Escribir "========================================================";
-    Escribir "";
-    Escribir "       [1] ATACAR";
-    Escribir "       [2] DEFENDER";
-    Escribir "       [3] HUIR";
-    Escribir "";
-    Escribir "========================================================";
+	Escribir "=====================================================";
+	Escribir "=                                                  =";
+	Escribir "=      ¡¡ ¡HA APARECIDO UN NUEVO ENEMIGO! !!       =";
+	Escribir "=                                                  =";
+	Escribir "=               ",Mayusculas(Mini_enemigos[indice_enemigo -1]), "                =";
+	Escribir "=                                                  =";
+	Escribir "=====================================================";
+	Escribir "";
+	Escribir "     Presiona una tecla para comenzar el combate...";
+	Esperar Tecla;
 	
 	
 	//Hacer un subproceso que restaure la vida de los enemigos
-	//Hacer el Subproceso Randomizador de enemigos para seguir con el juego
-	//---------------------------------------------------------------------//
+	//Ponerle la vida, daño y probabilidad de esquivar a los enemigos/Jugador para continuar.
+	//-------------------------------------------------------------------------------------------
 	
-	enemigo_aleatorio <- azar(10) + 1;
-	
-	//No funciona el subproceso. 
-	Enemigo <- Aleatorio_Enemigo_mini (enemigo_aleatorio,Mini_enemigos);
 	
 	
 FinProceso
