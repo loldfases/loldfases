@@ -2,6 +2,7 @@
 SubProceso Batalla_Terminada <- Combate ( Nombre Por Referencia,Mini_enemigos Por Referencia, nivel Por Referencia, vida_Guerrero Por Referencia , XP Por Referencia)
 	
 	Definir danio_Guerrero Como Entero;
+	//Ponerle primero la vida a los enemigos y las Stats del personaje antes de hacer Esto.
 	
 FinSubProceso
 
