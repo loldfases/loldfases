@@ -1,3 +1,13 @@
+//COMBATE
+SubProceso Batalla_Terminada <- Combate ( Nombre Por Referencia,Mini_enemigos Por Referencia, nivel Por Referencia, vida_Guerrero Por Referencia , XP Por Referencia)
+	
+	Definir danio_Guerrero Como Entero;
+	
+FinSubProceso
+
+
+
+
 //ENEMIGO PEQUEÑO ALEATORIO (No hay Jefes)
 SubProceso Enemigo <- Aleatorio_Enemigo_mini(enemigo_aleatorio Por Valor,Mini_enemigos Por Referencia,indice_enemigo Por Referencia  )
 	
@@ -232,7 +242,13 @@ SubProceso Objeto_para_mochila <- Cofre (Huecos Por referencia, mochila Por Refe
 	// Llamar al Subproceso de los cofres:   Objeto_para_mochila <- Cofre (indice, mochila, arma_aleatoria);
 FinSubProceso
 
+
+
+
+
 Proceso Slayer_WHAT
+	//---Combate---
+	definir Batalla_Terminada Como Entero;
 	
 	// ---Opciones del Jugador---
 	Definir opciones_jugador Como Caracter;
@@ -244,7 +260,8 @@ Proceso Slayer_WHAT
 	Huecos <- 1;
 	Definir mochila Como Caracter;
 	Definir Nombre Como Caracter;
-	Definir dinero Como Entero;
+	Definir nivel Como Entero; //Subirle el daño en +2 y la vida en +5
+	Definir XP Como Entero; //100xp de maximo, Subirle nivel +1 cuando llegue al maximo
 	Definir danio_Guerrero Como Entero;
 	Definir vida_Guerrero Como Entero;
 	
@@ -280,7 +297,6 @@ Proceso Slayer_WHAT
 	definir Minotauro, vida_Minotauro Como Entero;
 	
 	//Empieza partida
-	dinero <- 0;
 	vida_Guerrero <-100;
 	Escribir "       -- BIENVENIDO A --SLAYER_WHAT--";
 	Escribir " -- Demomento el juego esta en desarrollo pero espero que disfrutes del poco contenido que tiene uWu --";
@@ -393,6 +409,7 @@ Proceso Slayer_WHAT
 	Escribir "     Presiona una tecla para comenzar el combate...";
 	Esperar Tecla;
 	
+	Batalla_Terminada <- Combate (Nombre,Mini_enemigos, nivel, vida_Guerrero , XP);
 	
 	//Hacer un subproceso que restaure la vida de los enemigos
 	//Ponerle la vida, daño y probabilidad de esquivar a los enemigos/Jugador para continuar.
