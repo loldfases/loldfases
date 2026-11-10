@@ -1,14 +1,28 @@
 
 //FUTURAS MEJORAS;
-// Poder cambiar el arma en mitad de un combate, pero en ese turno te pega el enemigo mientras la cambias
-//Opcion de Esquivar, aumenta un 10+ en esquivar un ataque
+// Poder reemplazar el arma.
+// Opcion de Esquivar, aumenta un 10+ en esquivar un ataque
 // Poner la opcion de avanzar 
 
+//Hacer un Subproceso de Subida de nivel, cuando la XP llegue a 100 se sube 1 nivel y se sube la vida maxima un +10;
+
+ 
 
 
+
+//Mas adelante poner tipos de pociones
+//____________________________//
 //Bolsa con pociones para curarte
-Subproceso Bolsa_con_pociones ( Bolsa_pociones Por Referencia, pociones Por Referencia) 
-	
+Subproceso Bolsa_con_pociones (pociones Por Referencia )               // Bolsa_pociones Por Referencia, pociones Por Referencia, indice_pociones Por Referencia) 
+
+	si indice_pociones <= 10 Entonces
+		//Bolsa_pociones[indice_pociones] <- pociones;
+		//indice_pociones <- indice_pociones +1;
+		pociones<- pociones +1;
+		
+	FinSi
+	indice_pociones <- indice_pociones +1;
+
 FinSubProceso
 
 //COMBATE SubProceso Batalla_Terminada <- Combate ( Nombre Por Referencia,Mini_enemigos Por Referencia, nivel Por Referencia, vida_Guerrero Por Referencia , XP Por Referencia)
@@ -136,11 +150,12 @@ FinSubProceso
 //FinSubProceso
 
 //COFRES 
-SubProceso Objeto_para_mochila <- Cofre (Huecos Por referencia, mochila Por Referencia, arma_aleatoria Por Valor)
+SubProceso Objeto_para_mochila <- Cofre (Huecos Por referencia, mochila Por Referencia, arma_aleatoria Por Valor,pociones Por Referencia, vida_Guerrero Por Referencia,danio Por Referencia)
 
 // ---Armas---
-Definir espada, espada_rota, espada_madera,espada_diamante Como caracter; //Espadas
-Definir arco_madera, arco_metal,arco_roto Como caracter; //Arcos
+Definir espada, espada_rota, espada_madera,espada_diamante Como caracter; 		Definir espada_danio, espada_rota_danio, espada_madera_danio,espada_diamante_danio Como entero; //Espadas
+Definir arco_madera, arco_metal,arco_roto Como caracter; 		Definir arco_madera_danio, arco_metal_danio,arco_roto_danio Como Entero; //Arcos
+
 espada <- "espada";
 espada_rota <- "espada rota";
 espada_madera <- "espada de madera";
@@ -148,6 +163,17 @@ espada_diamante <- "espada de diamante";
 arco_madera <- "arco de madera";
 arco_metal <- "arco de metal";
 arco_roto <- "arco roto";
+
+//--Daño de las armas--
+espada_danio <- 10;
+espada_rota_danio <- 5;
+espada_madera_danio <- 8;
+espada_diamante_danio <- 30;
+
+arco_madera_danio <- 10;
+arco_metal_danio <- 22;
+arco_roto_danio <- 4;
+
 //Para ver el conteenido de la mochila solamente.
 Definir indice_mochila Como Entero;
 Definir Huecos_max Como Entero;
@@ -164,6 +190,7 @@ si Huecos <= 10 Entonces
 			mochila[Huecos] <- espada_madera;
 			Escribir " Se guardo en tu mochila un --espada_madera--  normalito";
 			Huecos <- Huecos +1;
+			danio <- espada_madera_danio;
 		2:
 			Escribir " ---------------------";
 			Escribir " ------arco de madera------"; 
@@ -171,6 +198,7 @@ si Huecos <= 10 Entonces
 			mochila[Huecos] <- arco_madera;
 			Escribir " Se guardo en tu mochila un --arco_madera--  normalito";
 			Huecos <- Huecos +1;
+			danio <- arco_madera_danio;
 		3:
 			Escribir " --------------";
 			Escribir " ----espada----"; 
@@ -178,6 +206,7 @@ si Huecos <= 10 Entonces
 			mochila[Huecos] <- espada;
 			Escribir " Se guardo en tu mochila un --espada--  Una espada normal y corriente... literal";
 			Huecos <- Huecos +1;
+			danio <- espada_danio;
 		4:
 			Escribir " Wow, NADA";
 		5:
@@ -187,6 +216,7 @@ si Huecos <= 10 Entonces
 			mochila[Huecos] <- espada_rota;
 			Escribir " Se guardo en tu mochila un --espada_rota-- Sigue con esa suerte y no duraras mucho!!";
 			Huecos <- Huecos +1;
+			danio <- espada_rota_danio;
 		6:
 			Escribir " Wow, NADA";
 		7:
@@ -196,6 +226,7 @@ si Huecos <= 10 Entonces
 			mochila[Huecos] <- arco_roto;
 			Escribir " Se guardo en tu mochila un --arco_roto--  Increible suerte!! GL"; 
 			Huecos <- Huecos +1;
+			danio <- arco_roto_danio;
 		8:
 			Escribir " --------------------------";
 			Escribir " -----espada de diamante------"; 
@@ -203,8 +234,12 @@ si Huecos <= 10 Entonces
 			mochila[Huecos] <- espada_diamante;
 			Escribir " Se guardo en tu mochila un --espada_diamante--  La mejor espada disponible!! ¿que flor en el culo tienes?";
 			Huecos <- Huecos +1;
+			danio <- espada_diamante_danio;
 		9:
-			//Aqui que te quite vida
+			//Te quite vida
+			Escribir "No encontraste NADA y al cerrar el cofre te pillaste los dedos (Que bobo)";
+			Escribir "Recibiste 5 de daño";
+			vida_Guerrero <- vida_Guerrero - 5;
 			
 		10:
 			Escribir " ------------------";
@@ -213,15 +248,19 @@ si Huecos <= 10 Entonces
 			mochila[Huecos] <- arco_metal;
 			Escribir " Se guardo en tu mochila un --arco_metal--  El mejor arco disponible!!";
 			Huecos <- Huecos +1;
-			
-			//Aniadir futuras armas y cosas!!!!
+			danio <- arco_metal_danio;
 			
 		11:
-			Escribir " Wow, NADA";
+			Escribir "Una pocion, que Gucci";
+			pociones <- pociones +1;
 			
 		12:
-			//Aqui que te quite vida
+			//Te quite vida
+			Escribir "No encontraste NADA y al cerrar el cofre te pillaste los dedos (Que bobo)";
+			Escribir "Recibiste 5 de daño";
+			vida_Guerrero <- vida_Guerrero - 5;
 			
+			//Añadir futuras armas y cosas!!!
 			
 	FinSegun
 SiNo
@@ -296,6 +335,7 @@ Proceso Slayer_WHAT //---Combate--- definir Batalla_Terminada Como Entero;
 	dimension Bolsa_pociones[10];
 	Definir Bolsa_pociones como Entero;
 	Definir pociones Como Entero; pociones <- 1; 
+	Definir indice_pociones Como Entero;
 	
 	Definir Nombre Como Caracter;
 	Definir vidaMax Como Entero; vidaMax <- 100;
@@ -304,17 +344,8 @@ Proceso Slayer_WHAT //---Combate--- definir Batalla_Terminada Como Entero;
 	Definir vida_Guerrero Como Entero; vida_Guerrero <-100;
 	
 	// ---Armas---
-	Definir Punios Como Entero;
-	Punios <- 2;
-	Definir espada, espada_rota, espada_madera,espada_diamante Como Entero; //Espadas
-	espada <- 10;
-	espada_rota <- 5;
-	espada_madera <- 8;
-	espada_diamante <- 30;
-	Definir arco_madera, arco_metal,arco_roto Como Entero; //Arcos
-	arco_madera <- 10;
-	arco_metal <- 22;
-	arco_roto <- 4;
+	Definir danio Como Entero;
+	danio <- 4;
 	Definir arma_aleatoria Como Entero; //Cofre
 	
 	// ---Enemigos---
@@ -352,7 +383,7 @@ Proceso Slayer_WHAT //---Combate--- definir Batalla_Terminada Como Entero;
 	Efecto_texto(" Antes de empezar tu aventura lo PRIMERO DE TODO y LO MAS IMPORTANTE ES:"  );
 	Esperar 300 Milisegundos;
 	Escribir "";
-	Efecto_texto(" El nombre de tu personaje porsupuesto");
+	Efecto_texto(" El nombre de tu personaje por supuesto");
 	Leer Nombre;
 	Escribir "";
 	
@@ -409,8 +440,8 @@ Proceso Slayer_WHAT //---Combate--- definir Batalla_Terminada Como Entero;
 		
 		Escribir "";
 		Escribir " Veamos que te toco: (casi todo este juego es gacha)";
-		arma_aleatoria <- Azar(10) + 1;
-		Objeto_para_mochila <- Cofre (Huecos, mochila, arma_aleatoria);
+		arma_aleatoria <- Azar(12) + 1;
+		Objeto_para_mochila <- Cofre (Huecos, mochila, arma_aleatoria,pociones,vida_Guerrero,danio);
 		Escribir "";
 		
 	SiNo
@@ -461,16 +492,25 @@ Proceso Slayer_WHAT //---Combate--- definir Batalla_Terminada Como Entero;
 	
 	//Poner alado del ESTADO DEL HERO el HESTADO DEL ENEMIGO
 	//-------------------------------------------------------
+	Escribir "==============================================================";
+	Escribir "                   ESTADO DEL COMBATE";
+	Escribir "==============================================================";
+	
+	Escribir "             --- ESTADO DEL HEROE ---";
 	Escribir "";
-    Escribir "=================================="; 
-    Escribir "          ESTADO DEL HEROE";
-    Escribir "==================================";
-    Escribir " NIVEL: ",nivel;
-    Escribir " VIDA: ",vida_Guerrero,"/",vidaMax;
-    Escribir " EXPERIENCIA: ",xp,"/100";
-    Escribir " DANIO: ",10;
-    Escribir " POCIONES: ",pociones;
-    Escribir "==================================";
+	Escribir "               ",nivel,": " ,vidaMax;
+	Escribir "               ",vida,": /100";
+	Escribir "               ",XP,": 100";
+	Escribir "               ","DANIO", danio;
+	Escribir "               ","pociones: ",pociones;
+	
+	Escribir "             --- ESTADO DEL ENEMIGO ---";
+	Escribir "";
+	Escribir "            NOMBRE: ESQUELETO CABALLERO";
+	Escribir "            VIDA: 20";
+	Escribir "            DANIO: 15";
+	
+	Escribir "==============================================================";
 	Escribir "     Presiona una tecla para comenzar el combate...";
 	Esperar Tecla;
 	
