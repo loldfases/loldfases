@@ -300,8 +300,7 @@ Proceso Slayer_WHAT //---Combate--- definir Batalla_Terminada Como Entero;
 	Definir Nombre Como Caracter;
 	Definir vidaMax Como Entero; vidaMax <- 100;
 	Definir nivel Como Entero; Nivel <- 1; //Subirle el daño en +2 y la vida en +5
-	Definir XP Como Entero; //100xp de maximo, Subirle nivel +1 cuando llegue al maximo
-	Definir danio_Guerrero Como Entero;
+	Definir XP Como Entero; xp <- 0;//100xp de maximo, Subirle nivel +1 cuando llegue al maximo
 	Definir vida_Guerrero Como Entero; vida_Guerrero <-100;
 	
 	// ---Armas---
@@ -459,6 +458,9 @@ Proceso Slayer_WHAT //---Combate--- definir Batalla_Terminada Como Entero;
 	Escribir "";
 	Escribir "";
 	Escribir "";
+	
+	//Poner alado del ESTADO DEL HERO el HESTADO DEL ENEMIGO
+	//-------------------------------------------------------
 	Escribir "";
     Escribir "=================================="; 
     Escribir "          ESTADO DEL HEROE";
@@ -466,7 +468,7 @@ Proceso Slayer_WHAT //---Combate--- definir Batalla_Terminada Como Entero;
     Escribir " NIVEL: ",nivel;
     Escribir " VIDA: ",vida_Guerrero,"/",vidaMax;
     Escribir " EXPERIENCIA: ",xp,"/100";
-    Escribir " DANIO: ",danio;
+    Escribir " DANIO: ",10;
     Escribir " POCIONES: ",pociones;
     Escribir "==================================";
 	Escribir "     Presiona una tecla para comenzar el combate...";
