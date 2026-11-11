@@ -12,7 +12,9 @@ FinSubProceso
 
 //Mas adelante poner tipos de pociones 
 //____________________________// 
-//Bolsa con pociones para curarte Subproceso Bolsa_con_pociones (pociones Por Referencia)       // Bolsa_pociones Por Referencia, pociones Por Referencia, indice_pociones Por Referencia)
+//Bolsa con pociones para curarte
+
+Subproceso Bolsa_con_pociones (pociones Por Referencia)       
 
 si indice_pociones <= 10 Entonces
 	//Bolsa_pociones[indice_pociones] <- pociones;
