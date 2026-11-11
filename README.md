@@ -1,17 +1,12 @@
 
-//FUTURAS MEJORAS; 
-// Poder reemplazar el arma. 
-// Opcion de Esquivar, aumenta un 10+ en esquivar un ataque 
-// Poner la opcion de avanzar
-
 
 //Hacer un Subproceso de Subida de nivel, cuando la XP llegue a 100 se sube 1 nivel y se sube la vida maxima un +10;
 SubProceso nivel <- Lvl_up ( Argumentos )
 	
 FinSubProceso
 
-//Mas adelante poner tipos de pociones 
-//____________________________// 
+
+
 //Bolsa con pociones para curarte
 
 Subproceso Bolsa_con_pociones (pociones Por Referencia)       
