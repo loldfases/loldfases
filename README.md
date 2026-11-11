@@ -1,76 +1,68 @@
 
-//FUTURAS MEJORAS;
-// Poder reemplazar el arma.
-// Opcion de Esquivar, aumenta un 10+ en esquivar un ataque
-// Poner la opcion de avanzar 
+//FUTURAS MEJORAS; 
+// Poder reemplazar el arma. 
+// Opcion de Esquivar, aumenta un 10+ en esquivar un ataque 
+// Poner la opcion de avanzar
+
 
 //Hacer un Subproceso de Subida de nivel, cuando la XP llegue a 100 se sube 1 nivel y se sube la vida maxima un +10;
+SubProceso nivel <- Lvl_up ( Argumentos )
+	
+FinSubProceso
 
- 
+//Mas adelante poner tipos de pociones 
+//____________________________// 
+//Bolsa con pociones para curarte Subproceso Bolsa_con_pociones (pociones Por Referencia)       // Bolsa_pociones Por Referencia, pociones Por Referencia, indice_pociones Por Referencia)
 
-
-
-//Mas adelante poner tipos de pociones
-//____________________________//
-//Bolsa con pociones para curarte
-Subproceso Bolsa_con_pociones (pociones Por Referencia )               // Bolsa_pociones Por Referencia, pociones Por Referencia, indice_pociones Por Referencia) 
-
-	si indice_pociones <= 10 Entonces
-		//Bolsa_pociones[indice_pociones] <- pociones;
-		//indice_pociones <- indice_pociones +1;
-		pociones<- pociones +1;
-		
-	FinSi
-	indice_pociones <- indice_pociones +1;
-
+si indice_pociones <= 10 Entonces
+	//Bolsa_pociones[indice_pociones] <- pociones;
+	//indice_pociones <- indice_pociones +1;
+	pociones<- pociones +1;
+	
+FinSi
+indice_pociones <- indice_pociones +1;
 FinSubProceso
 
 //COMBATE SubProceso Batalla_Terminada <- Combate ( Nombre Por Referencia,Mini_enemigos Por Referencia, nivel Por Referencia, vida_Guerrero Por Referencia , XP Por Referencia)
 
-//Definir danio_Guerrero Como Entero;
-//Ponerle primero la vida a los enemigos y las Stats del personaje antes de hacer Esto.
+//Definir danio_Guerrero Como Entero; //Ponerle primero la vida a los enemigos y las Stats del personaje antes de hacer Esto. 
 //FinSubProceso
 
-//ENEMIGO PEQUEÑO ALEATORIO (No hay Jefes) 
-SubProceso Enemigo <- Aleatorio_Enemigo_mini(enemigo_aleatorio Por Valor,Mini_enemigos Por Referencia,indice_enemigo Por Referencia,vida_enemigo Por Referencia,indice_vida_enemigo Por Referencia)
+//ENEMIGO PEQUEÑO ALEATORIO (No hay Jefes) SubProceso Enemigo <- Aleatorio_Enemigo_mini (enemigo_aleatorio Por Valor,Mini_enemigos Por Referencia,indice_enemigo Por Referencia,vida_enemigo Por Referencia,indice_vida_enemigo Por Referencia)
 
-	//Enemigos con su vida y daño (Aun no tienen puesto la vida y el daño)
-	//BIOMA LLANURA;
-Definir goblins Como Caracter; 				 Definir vida_goblins Como Entero; vida_goblins <- 30;
-Definir esqueleto_caballero Como Caracter;	 Definir vida_esqueleto_caballero Como Entero; vida_esqueleto_caballero <- 20; //Pero tiene mucho daño
-Definir esqueleto_arquero Como Caracter; 	 Definir vida_esqueleto_arquero Como Entero; vida_esqueleto_arquero <- 35; //Tiene mas probabilidad de esquivar por ser a distancia 
-Definir orcos Como Caracter; 				 Definir vida_orcos Como Entero; vida_orcos <- 40;  
-Definir slime Como Caracter; 				 Definir vida_slime Como Entero; vida_slime <- 20;
-Definir gremlin Como Caracter; 				 Definir vida_gremlin Como Entero; vida_gremlin <- 20; //Van minimo 2 gremlins juntos
-Definir caballero_zombi Como Caracter; 		 Definir vida_caballero_zombi Como Entero; vida_caballero_zombi <- 50;
-Definir zombi_mutado Como Caracter; 			 Definir vida_zombi_mutado Como Entero; 
-Definir gigante_bebe Como Caracter; 			 Definir vida_gigante_bebe Como Entero;
-Definir golem_bebe Como Caracter; 			 Definir vida_golem_bebe Como Entero;
-Definir bruja Como Caracter; 				 Definir vida_bruja Como Entero;
-Definir bandidos Como Caracter; 				 Definir vida_bandidos Como Entero;
-
-//BIOMA ----
+//Enemigos con su vida y daño (Aun no tienen puesto la vida y el daño)
+//BIOMA LLANURA;
+Definir goblins Como Caracter; Definir vida_goblins Como Entero;vida_goblins <- 30; // 1-4 goblins
+Definir esqueleto_caballero Como Caracter; Definir vida_esqueleto_caballero Como Entero; vida_esqueleto_caballero <- 20; //Pero tiene mucho daño 
+Definir esqueleto_arquero Como Caracter; Definir vida_esqueleto_arquero Como Entero; vida_esqueleto_arquero <- 35; //Tiene mas probabilidad de esquivar por ser a distancia 
+Definir orcos Como Caracter; Definir vida_orcos Como Entero; vida_orcos <- 40;
+Definir slime Como Caracter; Definir vida_slime Como Entero; vida_slime <- 20;
+Definir gremlin Como Caracter; Definir vida_gremlin Como Entero; vida_gremlin <- 20; //Van minimo 2 gremlins juntos 
+Definir caballero_zombi Como Caracter; Definir vida_caballero_zombi Como Entero; vida_caballero_zombi <- 50;
+Definir zombi_mutado Como Caracter; Definir vida_zombi_mutado Como Entero;  vida_zombi_mutado <- 20; //Al morir explota haciendo 10 de daño extra 
+Definir gigante_bebe Como Caracter; Definir vida_gigante_bebe Como Entero; vida_gigante_bebe <- 50;
+Definir golem_bebe Como Caracter; Definir vida_golem_bebe Como Entero; vida_golem_bebe <- 70;//Hace 10 de daño
+Definir bruja Como Caracter; Definir vida_bruja Como Entero;vida_bruja <- 20; //Probabilidad de envenenar
+Definir bandidos Como Caracter; Definir vida_bandidos Como Entero; vida_bandidos <- 30; // 
 
 
-
-
-//Para invocar un enemigo aleatorio.
-//  enemigo_aleatorio <- azar(10) + 1;
+//Para invocar un enemigo aleatorio. // enemigo_aleatorio <- azar(10) + 1;
 
 goblins <- "goblins";
 esqueleto_caballero <- "esqueleto caballero";
 esqueleto_arquero <- "esqueleto arquero";
-orcos <- "orco";
-slime <- "slime";
+orcos <- "orco"; slime <- "slime";
 gremlin <- "gremlin";
 caballero_zombi <- "caballero zombi";
 zombi_mutado <- "zombi mutado";
 gigante_bebe <- "gigante bebe";
-golem_bebe <- "golem bebe";
+golem_bebe <- "golem bebe"; 
 bruja <- "bruja";
 bandidos <- "bandidos";
+
 Escribir "";
 Escribir " TE APARECIÓ: ";
+Escribir "";
 
 Segun enemigo_aleatorio Hacer
 	
@@ -139,22 +131,19 @@ Segun enemigo_aleatorio Hacer
 		Escribir " --------------------";
 		Mini_enemigos[indice_enemigo] <- golem_bebe;
 		indice_enemigo <- indice_enemigo +1;
-		
-		
-		
-FinSegun
-FinSubProceso
+FinSegun FinSubProceso
 
 //JEFE ALEATORIO //SubProceso BOSS <- Aleatorio_Enemigo_BOSS()
 
 //FinSubProceso
 
-//COFRES 
+//COFRES
+
 SubProceso Objeto_para_mochila <- Cofre (Huecos Por referencia, mochila Por Referencia, arma_aleatoria Por Valor,pociones Por Referencia, vida_Guerrero Por Referencia,danio Por Referencia)
 
 // ---Armas---
-Definir espada, espada_rota, espada_madera,espada_diamante Como caracter; 		Definir espada_danio, espada_rota_danio, espada_madera_danio,espada_diamante_danio Como entero; //Espadas
-Definir arco_madera, arco_metal,arco_roto Como caracter; 		Definir arco_madera_danio, arco_metal_danio,arco_roto_danio Como Entero; //Arcos
+Definir espada,espada_rota, espada_madera,espada_diamante Como caracter;
+Definir espada_danio, espada_rota_danio, espada_madera_danio,espada_diamante_danio Como entero; //Espadas Definir arco_madera, arco_metal,arco_roto Como caracter; Definir arco_madera_danio, arco_metal_danio,arco_roto_danio Como Entero; //Arcos
 
 espada <- "espada";
 espada_rota <- "espada rota";
@@ -181,98 +170,108 @@ Definir opciones_jugador Como Caracter;
 Escribir "";
 Escribir " BUENA SUERTE UwU";
 Escribir "";
-si Huecos <= 10 Entonces
-	Segun  arma_aleatoria Hacer
-		1:
+si Huecos <= 10 Entonces Segun arma_aleatoria Hacer 
+	1:
 			Escribir " ---------------------";
-			Escribir " ----espada de madera----"; 
+			Escribir " ----espada de madera----";
 			Escribir " ---------------------";
 			mochila[Huecos] <- espada_madera;
-			Escribir " Se guardo en tu mochila un --espada_madera--  normalito";
+			Escribir " Se guardo en tu mochila un --espada_madera-- normalito";
 			Huecos <- Huecos +1;
 			danio <- espada_madera_danio;
-		2:
-			Escribir " ---------------------";
-			Escribir " ------arco de madera------"; 
+			
+	2: Escribir " ---------------------";
+			Escribir " ------arco de madera------";
 			Escribir " ---------------------";
 			mochila[Huecos] <- arco_madera;
-			Escribir " Se guardo en tu mochila un --arco_madera--  normalito";
+			Escribir " Se guardo en tu mochila un --arco_madera-- normalito";
 			Huecos <- Huecos +1;
 			danio <- arco_madera_danio;
-		3:
+	3:
+			
 			Escribir " --------------";
-			Escribir " ----espada----"; 
+			Escribir " ----espada----";
 			Escribir " --------------";
 			mochila[Huecos] <- espada;
-			Escribir " Se guardo en tu mochila un --espada--  Una espada normal y corriente... literal";
+			Escribir " Se guardo en tu mochila un --espada-- Una espada normal y corriente... literal";
 			Huecos <- Huecos +1;
-			danio <- espada_danio;
-		4:
-			Escribir " Wow, NADA";
-		5:
-			Escribir " ---------------------";
-			Escribir " ----espada rota------"; 
-			Escribir " ---------------------";
-			mochila[Huecos] <- espada_rota;
-			Escribir " Se guardo en tu mochila un --espada_rota-- Sigue con esa suerte y no duraras mucho!!";
-			Huecos <- Huecos +1;
-			danio <- espada_rota_danio;
-		6:
-			Escribir " Wow, NADA";
-		7:
-			Escribir " -----------------";
-			Escribir " ----arco roto----"; 
-			Escribir " -----------------";
-			mochila[Huecos] <- arco_roto;
-			Escribir " Se guardo en tu mochila un --arco_roto--  Increible suerte!! GL"; 
-			Huecos <- Huecos +1;
-			danio <- arco_roto_danio;
-		8:
-			Escribir " --------------------------";
-			Escribir " -----espada de diamante------"; 
-			Escribir " --------------------------";
-			mochila[Huecos] <- espada_diamante;
-			Escribir " Se guardo en tu mochila un --espada_diamante--  La mejor espada disponible!! ¿que flor en el culo tienes?";
-			Huecos <- Huecos +1;
-			danio <- espada_diamante_danio;
-		9:
-			//Te quite vida
-			Escribir "No encontraste NADA y al cerrar el cofre te pillaste los dedos (Que bobo)";
-			Escribir "Recibiste 5 de daño";
-			vida_Guerrero <- vida_Guerrero - 5;
+			danio <- espada_danio; 
 			
-		10:
-			Escribir " ------------------";
-			Escribir " ----arco de metal----"; 
-			Escribir " ------------------";
-			mochila[Huecos] <- arco_metal;
-			Escribir " Se guardo en tu mochila un --arco_metal--  El mejor arco disponible!!";
-			Huecos <- Huecos +1;
-			danio <- arco_metal_danio;
-			
-		11:
-			Escribir "Una pocion, que Gucci";
-			pociones <- pociones +1;
-			
-		12:
-			//Te quite vida
-			Escribir "No encontraste NADA y al cerrar el cofre te pillaste los dedos (Que bobo)";
-			Escribir "Recibiste 5 de daño";
-			vida_Guerrero <- vida_Guerrero - 5;
-			
-			//Añadir futuras armas y cosas!!!
-			
-	FinSegun
-SiNo
-	Escribir " No tienes mas espacio My G";
-FinSi
-Escribir "";
-Escribir "";
+	4:
+		Escribir " Wow, NADA";
+		Escribir "Pues te toca ir a punio limpio";
+		mochila[Huecos] <- danio;
+		Huecos <- Huecos +1;
+		
+	5:
+		
+		Escribir " ---------------------";
+		Escribir " ----espada rota------";
+		Escribir " ---------------------";
+		
+		mochila[Huecos] <- espada_rota;
+		Escribir " Se guardo en tu mochila un --espada_rota-- Sigue con esa suerte y no duraras mucho!!";
+		Huecos <- Huecos +1; danio <- espada_rota_danio; 
+		
+	6: 
+		Escribir " Wow, NADA";
+		Escribir "Pues te toca ir a punio limpio";
+		mochila[Huecos] <- danio;
+		Huecos <- Huecos +1;
+		
+	7:
+		Escribir " -----------------";
+		Escribir " ----arco roto----";
+		Escribir " -----------------";
+		mochila[Huecos] <- arco_roto;
+		Escribir " Se guardo en tu mochila un --arco_roto-- Increible suerte!! GL";
+		Huecos <- Huecos +1;
+		danio <- arco_roto_danio;
+		
+	8:
+		
+		Escribir " --------------------------";
+		Escribir " -----espada de diamante------";
+		Escribir " --------------------------";
+		mochila[Huecos] <- espada_diamante;
+		Escribir " Se guardo en tu mochila un --espada_diamante-- La mejor espada disponible!! ¿que flor en el culo tienes?";
+		Huecos <- Huecos +1;
+		danio <- espada_diamante_danio; 
+		
+	9:
+		//Te quite vida 
+		Escribir "No encontraste NADA y al cerrar el cofre te pillaste los dedos (Que bobo)";
+		Escribir "Recibiste 5 de daño";
+		vida_Guerrero <- vida_Guerrero - 5;
+	
+10:
+	Escribir " ------------------";
+	Escribir " ----arco de metal----"; 
+	Escribir " ------------------";
+	mochila[Huecos] <- arco_metal;
+	Escribir " Se guardo en tu mochila un --arco_metal--  El mejor arco disponible!!";
+	Huecos <- Huecos +1;
+	danio <- arco_metal_danio;
+	
+11:
+	Escribir "Una pocion, que Gucci";
+	pociones <- pociones +1;
+	
+12:
+	//Te quite vida
+	Escribir "No encontraste NADA y al cerrar el cofre te pillaste los dedos (Que bobo)";
+	Escribir "Recibiste 5 de daño";
+	vida_Guerrero <- vida_Guerrero - 5;
+	
+	//Añadir futuras armas y cosas!!!
+	
+FinSegun
+SiNo Escribir " No tienes mas espacio My G"; FinSi Escribir ""; Escribir "";
 
 Escribir " Quieres ver tu mochila? Escribe"," si ", "para ver";
 Leer opciones_jugador;
-si opciones_jugador = "si" o opciones_jugador = "Si" Entonces
-	
+
+	si opciones_jugador = "si" o opciones_jugador = "Si" Entonces
 	
 	Escribir "";
 	Escribir "   --- CONTENIDO DE LA MOCHILA ---";
@@ -282,45 +281,27 @@ si opciones_jugador = "si" o opciones_jugador = "Si" Entonces
 	Para indice_mochila <- 1 Hasta Huecos - 1 Con Paso 1 Hacer
 		Escribir "Hueco ", indice_mochila, " -> ", mochila[indice_mochila];
 	FinPara
-FinSi
-Esperar 200 Milisegundos;
+FinSi Esperar 200 Milisegundos;
 
-// Llamar al Subproceso de los cofres:   Objeto_para_mochila <- Cofre (indice, mochila, arma_aleatoria);
+// Llamar al Subproceso de los cofres: Objeto_para_mochila <- Cofre (indice, mochila, arma_aleatoria); FinSubProceso
+
+//Para hacer el efecto al texto SubProceso Efecto_texto ( Mensaje Por Valor) // Efecto_texto( );
+
+Definir  indice_mensaje Como Entero;
+
+Para indice_mensaje <- 0 Hasta Longitud(mensaje)-1 Hacer
+	Escribir Sin Saltar Subcadena(Mensaje, indice_mensaje,indice_mensaje);
+	Esperar 40 Milisegundos;
+	
+FinPara
+
+Escribir "";
 FinSubProceso
 
-
-//Para hacer el efecto al texto
-SubProceso Efecto_texto ( Mensaje Por Valor)
-	//  Efecto_texto(  );
+Proceso Slayer_WHAT 
+	//---Combate--- 
 	
-	Definir  indice_mensaje Como Entero;
-	
-	Para indice_mensaje <- 0 Hasta Longitud(mensaje)-1 Hacer
-		Escribir Sin Saltar Subcadena(Mensaje, indice_mensaje,indice_mensaje);
-		Esperar 40 Milisegundos;
-		
-	FinPara
-	
-	Escribir "";
-FinSubProceso
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Proceso Slayer_WHAT //---Combate--- definir Batalla_Terminada Como Entero;
+	definir Batalla_Terminada Como Entero;
 	
 	// ---Opciones del Jugador---
 	Definir opciones_jugador Como Caracter;
@@ -498,11 +479,12 @@ Proceso Slayer_WHAT //---Combate--- definir Batalla_Terminada Como Entero;
 	
 	Escribir "             --- ESTADO DEL HEROE ---";
 	Escribir "";
-	Escribir "               ",nivel,": " ,vidaMax;
-	Escribir "               ",vida,": /100";
+	Escribir "               ""Nivel: ",nivel;
+	Escribir "               ",vida,": ", vidaMax;
 	Escribir "               ",XP,": 100";
-	Escribir "               ","DANIO", danio;
+	Escribir "               ","Daño", danio;
 	Escribir "               ","pociones: ",pociones;
+	
 	
 	Escribir "             --- ESTADO DEL ENEMIGO ---";
 	Escribir "";
